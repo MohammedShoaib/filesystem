@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/coordination/coordination.iml" filepath="$PROJECT_DIR$/coordination/coordination.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/filesystem.iml" filepath="$PROJECT_DIR$/.idea/filesystem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/storage/storage.iml" filepath="$PROJECT_DIR$/storage/storage.iml" />
+    </modules>
+  </component>
+</project>
