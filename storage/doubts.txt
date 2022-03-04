@@ -1,0 +1,4 @@
+1. in what directory structure do we store files
+2. what should be the naming convention of files
+3. adding replication as a dependency in storage and coordination as a dependency in replication
+4. decide on naming convention of files
