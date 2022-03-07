@@ -4,6 +4,7 @@ import org.filesystem.storage.api.FileChunkRequest;
 import org.filesystem.storage.dto.FileUploadDTO;
 import org.filesystem.storage.notification.FileUploadNotificationService;
 import org.filesystem.storage.validator.FileValidator;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -31,5 +32,9 @@ public class FileIOOrchestrator {
 
     public void deleteFile(String fileName, FileChunkRequest fileChunkRequest) {
         fileStorageService.deleteFile(fileName, fileChunkRequest);
+    }
+
+    public Resource getFile(String fileName, FileChunkRequest fileChunkRequest) {
+        return fileStorageService.getFile(fileName, fileChunkRequest);
     }
 }

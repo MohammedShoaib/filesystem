@@ -3,12 +3,12 @@ package org.filesystem.storage.api;
 import lombok.extern.slf4j.Slf4j;
 import org.filesystem.storage.dto.FileUploadDTO;
 import org.filesystem.storage.service.FileIOOrchestrator;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
-import javax.websocket.server.PathParam;
 
 @RestController("/file-chunk")
 @Slf4j
@@ -35,6 +35,15 @@ public class FileChunkController {
                                                   @RequestBody final FileChunkRequest fileChunkRequest) {
 
         fileIOOrchestrator.deleteFile(fileName, fileChunkRequest);
-        return new ResponseEntity<>("Uploaded File Successfully", HttpStatus.ACCEPTED);
+        return new ResponseEntity<>("File deleted successfully", HttpStatus.ACCEPTED);
+    }
+
+    @GetMapping(path = "/{file-name}")
+    @ResponseBody
+    public ResponseEntity<Resource> getFileChunk(@PathVariable("file-name") final String fileName,
+                                                  final FileChunkRequest fileChunkRequest) {
+        Resource file = fileIOOrchestrator.getFile(fileName, fileChunkRequest);
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"").body(file);
     }
 }
